@@ -315,6 +315,13 @@ a {
   text-align: right;
 }
 
+.hero-logo {
+  display: block;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto 16px;
+}
+
 .new-single-badge {
   display: inline-block;
   background: rgba(255,255,255,0.15);
@@ -495,6 +502,24 @@ a {
   margin-top: 40px;
   display: flex;
   justify-content: center;
+}
+
+.fb-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #1877f2;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.fb-link-btn:hover {
+  background: #1558b0;
 }
 
 .info-table {
