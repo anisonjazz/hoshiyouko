@@ -1,0 +1,430 @@
+/* ==============================
+   ディスコグラフィーページ固有スタイル
+   ============================== */
+
+.disco-main {
+  padding-top: 64px;
+}
+
+/* ページヒーロー */
+.page-hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 60%, #1a1a2e 100%);
+  padding: 64px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: 'DISCOGRAPHY';
+  position: absolute;
+  font-size: clamp(60px, 12vw, 140px);
+  font-weight: 900;
+  color: rgba(255,255,255,0.03);
+  letter-spacing: 0.1em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.page-hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: #e94f8c;
+  margin-bottom: 12px;
+}
+
+.page-hero-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.1em;
+}
+
+/* ナビ current */
+.global-nav .current {
+  color: #e94f8c !important;
+  background: rgba(233, 79, 140, 0.07);
+  border-radius: 4px;
+}
+
+/* 共通ラッパー */
+.disco-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+/* ==============================
+   ピックアップ（最新シングル）
+   ============================== */
+.disco-pickup {
+  background: #fff;
+}
+
+.pickup-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  align-items: start;
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.pickup-jacket {
+  grid-column: 1;
+}
+
+.pickup-jacket img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  display: block;
+  background: #fff;
+}
+
+.pickup-info {
+  grid-column: 2 / 4;
+  padding: 40px 40px 40px 0;
+}
+
+.jacket-fallback {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #6b8dd6 0%, #8c6dae 60%, #c0379a 100%);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  padding: 16px;
+  box-shadow: 0 12px 40px rgba(100,60,160,0.3);
+  gap: 8px;
+}
+
+.jacket-fallback-artist {
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.jacket-fallback-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.pickup-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.disco-type {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #e94f8c;
+  background: rgba(233,79,140,0.08);
+  border: 1px solid rgba(233,79,140,0.2);
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+}
+
+.pickup-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(24px, 3.5vw, 38px);
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.pickup-coupling {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 24px;
+}
+
+.disco-meta {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 8px 16px;
+  margin-bottom: 28px;
+  padding: 20px;
+  background: #f5f5f9;
+  border-radius: 8px;
+}
+
+.disco-meta dt {
+  font-size: 12px;
+  font-weight: 700;
+  color: #999;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+}
+
+.disco-meta dd {
+  font-size: 14px;
+  color: #333;
+}
+
+.disco-tracks {
+  margin-bottom: 32px;
+}
+
+.tracks-heading {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #999;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.disco-tracks ol {
+  list-style: none;
+  counter-reset: track;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.disco-tracks ol li {
+  counter-increment: track;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.5;
+}
+
+.disco-tracks ol li::before {
+  content: counter(track, decimal-leading-zero);
+  font-size: 11px;
+  font-weight: 700;
+  color: #e94f8c;
+  min-width: 20px;
+  flex-shrink: 0;
+}
+
+/* ==============================
+   シングル一覧グリッド
+   ============================== */
+.disco-list {
+  background: #f8f8fb;
+}
+
+.disco-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.disco-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  transition: transform 0.25s, box-shadow 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.disco-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+}
+
+.disco-card-link {
+  display: block;
+  overflow: hidden;
+}
+
+.disco-jacket-wrap {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #fff;
+}
+
+.disco-jacket {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+  display: block;
+  background: #fff;
+}
+
+.disco-card:hover .disco-jacket {
+  transform: scale(1.04);
+}
+
+.jacket-fallback-sm {
+  width: 100%;
+  height: 100%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6b8dd6, #c0379a);
+  color: #fff;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  padding: 16px;
+  line-height: 1.5;
+}
+
+.disco-card-body {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.disco-card-date {
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+
+.disco-card-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.disco-card-coupling {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 14px;
+}
+
+.disco-card-meta {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 4px 10px;
+  margin-bottom: 16px;
+  font-size: 12px;
+}
+
+.disco-card-meta dt {
+  color: #aaa;
+  font-weight: 700;
+}
+
+.disco-card-meta dd {
+  color: #555;
+}
+
+.disco-card-tracks {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.disco-card-tracks ol {
+  list-style: none;
+  counter-reset: track;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.disco-card-tracks ol li {
+  counter-increment: track;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.disco-card-tracks ol li::before {
+  content: counter(track, decimal-leading-zero);
+  font-size: 10px;
+  font-weight: 700;
+  color: #e94f8c;
+  min-width: 18px;
+  flex-shrink: 0;
+}
+
+.btn-sm {
+  padding: 9px 20px;
+  font-size: 13px;
+}
+
+/* ==============================
+   レスポンシブ
+   ============================== */
+@media (max-width: 900px) {
+  .pickup-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .pickup-jacket {
+    grid-column: 1;
+  }
+
+  .pickup-info {
+    grid-column: 1;
+    padding: 0 24px 32px;
+  }
+
+  .disco-meta {
+    text-align: left;
+  }
+
+  .disco-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-hero { padding: 48px 24px; }
+
+  .disco-inner { padding: 56px 16px; }
+
+  .disco-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .disco-card {
+    flex-direction: column;
+  }
+
+  .disco-jacket-wrap {
+    aspect-ratio: 1;
+  }
+
+  .disco-card-body {
+    padding: 16px;
+  }
+
+  .disco-card-tracks { display: none; }
+}
