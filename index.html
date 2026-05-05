@@ -225,7 +225,7 @@
       <h2 class="section-title">お問い合わせ</h2>
       <div class="contact-inner">
         <p class="contact-lead">出演・イベント・取材等のお問い合わせはこちらからお気軽にどうぞ。</p>
-        <form class="contact-form" onsubmit="handleSubmit(event)">
+        <form class="contact-form" action="mail.php" method="post">
           <div class="form-group">
             <label for="name">お名前 <span class="required">必須</span></label>
             <input type="text" id="name" name="name" placeholder="山田 花子" required>
@@ -248,6 +248,9 @@
         </form>
         <div id="formSuccess" class="form-success" style="display:none;">
           <p>お問い合わせを受け付けました。担当者よりご連絡いたします。</p>
+        </div>
+        <div id="formError" class="form-success" style="display:none; color:#c00;">
+          <p>送信に失敗しました。しばらくしてからもう一度お試しください。</p>
         </div>
       </div>
     </section>
@@ -329,12 +332,16 @@
       });
     });
 
-    // フォーム送信（デモ）
-    function handleSubmit(e) {
-      e.preventDefault();
-      document.querySelector('.contact-form').style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-    }
+    // 送信完了・エラー表示
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('sent') === '1') {
+        document.querySelector('.contact-form').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else if (params.get('error') === '1') {
+        document.getElementById('formError').style.display = 'block';
+      }
+    })();
   </script>
 
 </body>
