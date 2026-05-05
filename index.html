@@ -225,7 +225,7 @@
       <h2 class="section-title">お問い合わせ</h2>
       <div class="contact-inner">
         <p class="contact-lead">出演・イベント・取材等のお問い合わせはこちらからお気軽にどうぞ。</p>
-        <form class="contact-form" action="mail.php" method="post">
+        <form class="contact-form" onsubmit="handleSubmit(event)">
           <div class="form-group">
             <label for="name">お名前 <span class="required">必須</span></label>
             <input type="text" id="name" name="name" placeholder="山田 花子" required>
@@ -332,16 +332,26 @@
       });
     });
 
-    // 送信完了・エラー表示
-    (function() {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get('sent') === '1') {
-        document.querySelector('.contact-form').style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
-      } else if (params.get('error') === '1') {
-        document.getElementById('formError').style.display = 'block';
-      }
-    })();
+    // フォーム送信（メーラー起動）
+    function handleSubmit(e) {
+      e.preventDefault();
+      const name    = document.getElementById('name').value;
+      const email   = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+
+      const body = encodeURIComponent(
+        'お名前：' + name + '\n' +
+        'メールアドレス：' + email + '\n\n' +
+        'メッセージ：\n' + message
+      );
+      const mailSubject = encodeURIComponent('[お問い合わせ] ' + subject);
+
+      window.location.href = 'mailto:singeryoh2020@gmail.com?subject=' + mailSubject + '&body=' + body;
+
+      document.querySelector('.contact-form').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
   </script>
 
 </body>
